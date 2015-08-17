@@ -1,0 +1,24 @@
+{
+  "name": "reddit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CristinaFoltea/reddit-clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CristinaFoltea/reddit-clone/issues"
+  },
+  "homepage": "https://github.com/CristinaFoltea/reddit-clone#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "gzippo": "^0.2.0"
+  }
+}
