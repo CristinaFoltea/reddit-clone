@@ -1,0 +1,21 @@
+nav {
+  padding: 30px;
+  background: $bg;
+  .title, .search {
+    margin-right: 5%;
+  }
+  form {
+    padding: 0 0 0 340px;
+
+    label {
+      padding: 5px;
+    }
+    textarea {
+      resize: none;
+      background: transparent;
+    }
+  }
+}
+ div.form {
+   padding: 30px;
+ }

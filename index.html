@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="reddit">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+  <script src="https://code.angularjs.org/1.4.3/angular-animate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCTRL">
+    <nav>
+      <span class="title">{{title}}</span>
+      <input class="add" type="submit" ng-model="show" ng-click="show =! show" value="+ Submit Post">
+      <input class="search" type="text" ng-model="search" placeholder="Search">
+      <label for="option">Sort by</label>
+        <select class="comment-home" id="option" ng-model="option" ng-init="option = '-rating'">
+          <option value="-rating">Votes</option>
+          <option value="-date">Date</option>
+          <option value="title">Title(A-Z)</option>
+          <option value="-title">Title(Z-A)</option>
+      </select>
+    </nav>
+    <div ng-show="show" class="slide-down form">
+        <form ng-submit="addArticle(); show = false" name="form" novalidate>
+          <p class="label">
+            <label for="title">Title</label><br>
+            <input type="text" id="title" ng-model="article.title" required>
+          </p>
+          <p class="label">
+            <label for="author">Author's Full Name</label><br>
+            <input type="text" id="author" ng-model="article.author" required>
+          </p>
+          <p class="label">
+            <label for="url">Image Url</label><br>
+            <input type="text" id="url" ng-model="article.url" required>
+          </p>
+          <p class="label">
+            <label for="description">Description</label><br>
+            <textarea id="description" cols="30" rows="10" ng-model="article.description" required></textarea>
+          </p>
+          <input type="submit" ng-disabled='form.$invalid' value="Submit Post">
+        </form>
+    </div>
+    <section ng-repeat="post in articles | filter:search | orderBy : option" class="clearfix slide-left" ng-class="animation">
+      <img ng-src="{{post.url}}" alt="img" class="picture">
+        <article class="main-article">
+        <p>
+          <span class="title">{{post.title}}</span>
+          |
+          <i class="fa fa-arrow-up" ng-style="{color : '#00cc00'}" ng-click="post.rating = 1 * post.rating + 1; update_rating(post._id, post.rating)"></i>
+          <i class="fa fa-arrow-down" ng-style="{color : 'red'}" ng-click="post.rating = 1 * post.rating - 1; update_rating(post._id, post.rating)"></i>
+          <span ng-style="{ color : update_color(post.rating)}">{{post.rating}}</span>
+        </p>
+        <p class="author">by {{post.author}}</p>
+        <p class="description">{{post.description}}</p>
+        <p>
+          <span class="space">
+            <i class="fa fa-calendar"> {{post.date | amCalendar}}</i>
+          </span>
+            |
+            <span ng-model="list_comments" ng-click="list_comments =! list_comments; add_comment = false" class="space">
+              <i class="fa fa-comment"></i>
+              <ng-pluralize class="comment" count="post.comment.length"
+                     when="{'1': '1 comment',
+                           'other': '{} comments'}">
+              </ng-pluralize>
+            </span>
+            |
+            <span class="space">
+              <i class="fa fa-pencil"></i>
+              <span class="comment" ng-model="add_comment" ng-click="add_comment =! add_comment; list_comments = false">Add Comment</span>
+            </span>
+            |
+            <span class="space star" ng-model="is_active" ng-click="is_active =! is_active; save(post._id)">
+              <i class="fa fa-star" ng-class="{'star-yellow' : is_active}"></i> Favorite
+            </span>
+            <div ng-show="list_comments" ng-repeat="comment in post.comment" class="slide-down">
+             {{comment.username}} - {{comment.text}}
+            </div>
+            <div ng-show="add_comment" class="slide-down">
+              Author<input type="text" ng-model="post.comment.username" placeholder="username">
+              Text <input type="text" ng-model="post.comment.text" placeholder="comment text">
+              <input type="submit" value="Add Comment" ng-click="add_comment = false; update(post._id, post.comment.username, post.comment.text); list_comments = true; post.comment.username=''; post.comment.text=''">
+            </div>
+        </p>
+      </article>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

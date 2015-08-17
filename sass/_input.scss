@@ -1,0 +1,71 @@
+body {
+  input[type="submit"] {
+    background-image:
+      -webkit-linear-gradient($light-grey, $bg);
+    background-image:
+      -o-linear-gradient($light-grey, $bg);
+    background-image:
+      linear-gradient($light-grey, $bg);
+    }
+
+   input{
+     appearance: none;
+     background: transparent;
+   }
+
+   input, textarea {
+      width: 200px;
+       border: 1px solid $grey;
+       border-radius: 3px 3px;
+      &:focus {
+        outline: none;
+      }
+   }
+
+   nav {
+     select, option {
+       border: 0;
+       background-color: transparent;
+       -webkit-appearance: none;
+       -moz-appearance:    none;
+       appearance:         none;
+       outline: none;
+       width: 150px;
+     }
+   }
+
+   input[type="submit"].add {
+     border: none;
+     background-image: none;
+   }
+   @mixin placeholder {
+     ::-webkit-input-placeholder {@content}
+     :-moz-placeholder           {@content}
+     ::-moz-placeholder          {@content}
+     :-ms-input-placeholder      {@content}
+   }
+
+   @include placeholder {
+    padding: 0 5px;
+    font-weight:80;
+   }
+}
+
+ section {
+   input {
+    margin: 0 10px 0 5px;
+   }
+ }
+
+ div.form input, div.form textarea {
+   width: 400px;
+   resize: none;
+ }
+
+ input[required].ng-pristine, textarea[required].ng-pristine, input[required].ng-invalid, textarea[required].ng-invalid {
+   border: 1px solid $red;
+ }
+
+ input[required].ng-valid, textarea[required].ng-valid {
+   border: 1px solid $green;
+ }

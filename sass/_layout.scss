@@ -1,0 +1,31 @@
+section {
+  background: $bg;
+  margin: 30px;
+    img {
+      width: 300px;
+      height: 200px;
+      margin: 30px  0 30px 20px;
+      float: left;
+    }
+    .main-article {
+      width: 75%;
+      padding: 20px;
+      float: right;
+    }
+    .author {
+      margin-left: 80%;
+    }
+    .description {
+      text-align: justify;
+    }
+    .comment, .star {
+      cursor: pointer;
+    }
+    .space {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    .star-yellow {
+      color: $yellow;
+    }
+}
