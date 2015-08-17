@@ -1,12 +1,17 @@
 nav {
   padding: 30px;
   background: $bg;
-  .title, .search {
-    margin-right: 5%;
+  .search {
+    margin-right: 30px;
+  }
+  a {
+    margin-right: 8%;
+    padding:10px;
+    text-decoration: none;
+    color: #000;
+    float: right;
   }
   form {
-    padding: 0 0 0 340px;
-
     label {
       padding: 5px;
     }
@@ -17,5 +22,5 @@ nav {
   }
 }
  div.form {
-   padding: 30px;
+   padding: 10px;
  }

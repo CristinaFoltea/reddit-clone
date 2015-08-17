@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="reddit">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+  <script src="https://code.angularjs.org/1.4.3/angular-animate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.js"></script>
+</head>
+<body>
+  <div ng-controller="mainCTRL">
+    <section ng-repeat="fav in favorite" class="clearfix slide-left">
+      <img ng-src="{{fav.url}}" alt="img" class="picture">
+        <article class="main-article">
+        <p>
+          <span class="title">{{fav.title}}</span>
+        </p>
+        <p class="author">by {{fav.author}}</p>
+        <p class="description">{{fav.description}}</p>
+        <p>
+          <span class="space">
+            <i class="fa fa-calendar"> {{fav.date | amCalendar}}</i>
+          </span>
+            |
+            <span ng-model="list_comments" ng-click="list_comments =! list_comments; add_comment = false" class="space">
+              <i class="fa fa-comment"></i>
+              <ng-pluralize class="comment" count="fav.comment.length"
+                     when="{'1': '1 comment',
+                           'other': '{} comments'}">
+              </ng-pluralize>
+            </span>
+            <div ng-show="list_comments" ng-repeat="comment in fav.comment" class="slide-down">
+             {{comment.username}} - {{comment.text}}
+            </div>
+        </p>
+      </article>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -3,6 +3,8 @@
     .controller('mainCTRL', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
       $scope.articles = []
       $scope.article = {}
+      $scope.favorite = JSON.parse(localStorage.getItem('favorite')) || []
+      localStorage.clear()
       $scope.title = 'Reddit Clone'
       $scope.is_active = false
       moment.locale('en', {
@@ -71,7 +73,13 @@
       }
 
       $scope.save = function(id){
-        console.log('hello' + id)
+        $scope.favorite = $scope.favorite.concat(
+          $scope.articles.filter(function(value){
+            return value._id == id
+          })
+        )
+        console.log($scope.favorite)
+        localStorage.setItem('favorite', JSON.stringify($scope.favorite))
       }
     }])
 })()

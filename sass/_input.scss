@@ -30,12 +30,13 @@ body {
        -moz-appearance:    none;
        appearance:         none;
        outline: none;
-       width: 150px;
+       width: 200px;
      }
    }
 
    input[type="submit"].add {
      border: none;
+     width: 160px;
      background-image: none;
    }
    @mixin placeholder {

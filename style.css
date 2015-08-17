@@ -384,8 +384,10 @@ body {
     font-size: 1.5em;
     font-weight: bold; }
 
-nav input {
+nav {
   font-size: 1.2em; }
+  nav input, nav a {
+    font-size: 1em; }
 
 /* ------------------------------------------- */
 /* Slide Down
@@ -522,18 +524,22 @@ nav input {
 nav {
   padding: 30px;
   background: #EAF5EF; }
-  nav .title, nav .search {
-    margin-right: 5%; }
-  nav form {
-    padding: 0 0 0 340px; }
-    nav form label {
-      padding: 5px; }
-    nav form textarea {
-      resize: none;
-      background: transparent; }
+  nav .search {
+    margin-right: 30px; }
+  nav a {
+    margin-right: 8%;
+    padding: 10px;
+    text-decoration: none;
+    color: #000;
+    float: right; }
+  nav form label {
+    padding: 5px; }
+  nav form textarea {
+    resize: none;
+    background: transparent; }
 
 div.form {
-  padding: 30px; }
+  padding: 10px; }
 
 section {
   background: #EAF5EF;
@@ -582,10 +588,11 @@ body nav select, body nav option {
   -moz-appearance: none;
   appearance: none;
   outline: none;
-  width: 150px; }
+  width: 200px; }
 
 body input[type="submit"].add {
   border: none;
+  width: 160px;
   background-image: none; }
 
 body ::-webkit-input-placeholder {
