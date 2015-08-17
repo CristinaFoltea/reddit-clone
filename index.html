@@ -17,8 +17,8 @@
       <span class="title">{{title}}</span>
       <input class="add" type="submit" ng-model="show" ng-click="show =! show" value="+ Submit Post">
       <input class="search" type="text" ng-model="search" placeholder="Search">
-      <label for="option">Sort by</label>
-        <select class="comment-home" id="option" ng-model="option" ng-init="option = '-rating'">
+      <label for="select">Sort by</label>
+        <select class="comment-home" id="select" ng-model="option" ng-init="option = '-rating'">
           <option value="-rating">Votes</option>
           <option value="-date">Date</option>
           <option value="title">Title(A-Z)</option>
@@ -78,7 +78,7 @@
               <span class="comment" ng-model="add_comment" ng-click="add_comment =! add_comment; list_comments = false">Add Comment</span>
             </span>
             |
-            <span class="space star" ng-model="is_active" ng-click="is_active =! is_active; save(post._id)">
+            <span class="space star" ng-model="is_active" ng-click="is_active =! is_active; save(post._id, is_active)">
               <i class="fa fa-star" ng-class="{'star-yellow' : is_active}"></i> Favorite
             </span>
             <div ng-show="list_comments" ng-repeat="comment in post.comment" class="slide-down">

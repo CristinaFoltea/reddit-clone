@@ -7,7 +7,7 @@
       $scope.favorite = JSON.parse(localStorage.getItem('favorite')) || []
       localStorage.clear()
       $scope.title = 'Reddit Clone'
-      $scope.is_active = false
+      $scope.isActive = false
       moment.locale('en', {
         calendar : {
             lastDay : '[Yesterday at] LT',
@@ -74,13 +74,20 @@
         }
       }
 
-      $scope.save = function(id){
-        $scope.favorite = $scope.favorite.concat(
-          $scope.articles.filter(function(value){
-            return value._id == id
-          })
-        )
-        console.log($scope.favorite)
+      $scope.save = function(id, isActive){
+        if (isActive){
+          $scope.favorite = $scope.favorite.concat(
+            $scope.articles.filter(function(value){
+              return value._id === id
+            })
+          )
+        } else {
+          console.log('not-active')
+          console.log($scope.favorite)
+          $scope.favorite = $scope.favorite.filter(function(value){
+              return value._id !== id
+            })
+        }
         localStorage.setItem('favorite', JSON.stringify($scope.favorite))
       }
     }])
