@@ -3,6 +3,7 @@
     .controller('mainCTRL', ['$scope', '$http', '$interval', function($scope, $http, $interval) {
       $scope.articles = []
       $scope.article = {}
+      $scope.loading = true
       $scope.favorite = JSON.parse(localStorage.getItem('favorite')) || []
       localStorage.clear()
       $scope.title = 'Reddit Clone'
@@ -20,6 +21,7 @@
 
       $http.get('https://young-atoll-3836.herokuapp.com/api/post')
       .then(function(response){
+        $scope.loading = false
         $scope.articles = response.data
       }, function(data, status){
         console.log(data, status)

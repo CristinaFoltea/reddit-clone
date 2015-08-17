@@ -47,6 +47,7 @@
           <input type="submit" ng-disabled='form.$invalid' value="Submit Post">
         </form>
     </div>
+    <div ng-show="loading" class="loading">LOADING>>>>>>></div>
     <section ng-repeat="post in articles | filter:search | orderBy : option" class="clearfix slide-left" ng-class="animation">
       <img ng-src="{{post.url}}" alt="img" class="picture">
         <article class="main-article">
