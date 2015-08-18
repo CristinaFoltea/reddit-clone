@@ -1,0 +1,65 @@
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2)  {
+  body {
+    textarea, input[type="text"], input[type="button"], input[type="submit"], select {
+     -webkit-appearance: none;
+     border-radius: 0;
+    }
+
+    nav {
+      font-size: 0.9rem;
+      width: 100vw;
+      height: 24vh;
+      padding: 0;
+      background: $bg;
+      .search {
+        border-left: none;
+        border-right: none;
+        background: white;
+      }
+      .search, a.new-tab, input.add, .title, select {
+        border-bottom: 1px solid $grey;
+        display: block;
+        padding-left: 20px;
+        width: 100vw;
+        height: 30px;
+        vertical-align: middle;
+        text-align: left;
+      }
+      select {
+        position: relative;
+        z-index: 100;
+      }
+      a.new-tab {
+        position: relative;
+        left: 30px;
+      }
+    }
+  }
+
+  div.form {
+    width: 80vw;
+    margin: 0;
+    input, textarea {
+      width: 90vw;
+    }
+  }
+
+  section {
+    margin: 10px 0 0 0;
+    img {
+      width: 90vw;
+      height: 100%;
+      margin-bottom: 5px;
+    }
+    .main-article {
+      width: 100vw;
+      float: left;
+    }
+    .author {
+      margin-left: 10px;
+    }
+  }
+}

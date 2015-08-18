@@ -2,6 +2,7 @@
 <html lang="en" ng-app="reddit">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
   <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
@@ -17,8 +18,7 @@
       <span class="title">{{title}}</span>
       <input class="add" type="submit" ng-model="show" ng-click="show =! show" value="+ Submit Post">
       <input class="search" type="text" ng-model="search" placeholder="Search">
-      <label for="select">Sort by</label>
-        <select class="comment-home" id="select" ng-model="option" ng-init="option = '-rating'">
+        Sort by <select class="comment-home" id="select" ng-model="option" ng-init= "option = '-rating'">
           <option value="-rating">Votes</option>
           <option value="-date">Date</option>
           <option value="title">Title(A-Z)</option>
@@ -47,7 +47,7 @@
           <input type="submit" ng-disabled='form.$invalid' value="Submit Post">
         </form>
     </div>
-    <div ng-show="loading" class="loading">LOADING>>>>>>></div>
+    <div ng-show="loading" class="loading">Waiting on some data !!!!!</div>
     <section ng-repeat="post in articles | filter:search | orderBy : option" class="clearfix slide-left" ng-class="animation">
       <img ng-src="{{post.url}}" alt="img" class="picture">
         <article class="main-article">
